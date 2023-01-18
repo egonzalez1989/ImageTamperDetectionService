@@ -1,0 +1,111 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="main-content-container container-fluid px-4">
+    <!-- Page Header -->
+    <div class="page-header row no-gutters py-4">
+      <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <!--<span class="text-uppercase page-subtitle">Dashboard</span>-->
+        <h3 class="page-title">Analysis Results</h3>
+      </div>
+    </div>
+    <!-- End Page Header -->    
+    <div class="row">
+      <!-- Users Stats -->
+      <div class="col-lg col-md-12 col-sm-12 mb-4">
+        <div class="card card-small">
+          <div class="card-header border-bottom">
+            <h6 class="m-0">Image</h6>
+          </div>
+          <div class="card-body pt-0">
+              <canvas width="{{ request.session.w }}" height="{{ request.session.h }}" style="max-width: 100% !important;" id="canvas0"></canvas>
+              <img id="original_image" src="/{{ request.session.imgdir }}/img.png" hidden>
+              <input id="himg" type="number" value={{ request.session.h }} hidden>
+              <input id="wimg" type="number" value={{ request.session.w }} hidden>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Users Stats -->
+
+
+    <!-- Channel visible results -->
+    <div class="row">
+        <div class="col-lg col-md-6 col-sm-6 mb-4">
+            <div class="card card-small card-post card-post--1">
+                <canvas id='canvas1' style="max-width: 100%"></canvas>
+                <img id="channel1" src="/{{ request.session.channel1 }}" hidden>
+                <input type="hidden" id="hist1" value="{{ request.session.hist1 }}" />
+            </div>
+            <div class="card-body">
+              <div class="card card-small card-post card-post--1">
+                  <canvas height=300 style="max-width: 100% !important;" class="blog-overview-users" id="chart1"></canvas>
+                  <input id="th1" type="number" value=0 hidden>
+              </div>
+          </div>
+          <div class="card-body">
+              <div class="card card-small card-post card-post--1">
+                  <label for="chk1">Segment</label>
+                  <input type="checkbox" id="chk1">
+              </div>
+          </div>
+      </div>
+
+      <div class="col-lg col-md-6 col-sm-6 mb-4">
+        <div class="card card-small card-post card-post--1">
+            <canvas id='canvas2' style="max-width: 100%"></canvas>
+            <img id="channel2" src="/{{ request.session.channel2 }}" hidden>
+            <input type="hidden" id="hist2" value="{{ request.session.hist2 }}" />
+        </div>
+          <div class="card-body">
+              <div class="card card-small card-post card-post--1">
+                  <canvas height=300 style="max-width: 100% !important;" class="blog-overview-users" id="chart2"></canvas>
+                  <input id="th2" type="number" value=0 hidden>
+              </div>
+          </div>
+          <div class="card-body">
+              <div class="card card-small card-post card-post--1">
+                  <label for="chk2">Segment</label>
+                  <input type="checkbox" id="chk2">
+              </div>
+          </div>
+      </div>
+
+      <div class="col-lg col-md-4 col-sm-6 mb-4">
+        <div class="card card-small card-post card-post--1">
+            <canvas id='canvas3' style="max-width: 100%"></canvas>
+            <img id="channel3" src="/{{ request.session.channel3 }}" hidden>
+            <input type="hidden" id="hist3" value="{{ request.session.hist3 }}" />
+        </div>
+          <div class="card-body">
+              <div class="card card-small card-post card-post--1">
+                  <canvas height=300 style="max-width: 100% !important;" class="blog-overview-users" id="chart3"></canvas>
+                  <input id="th3" type="number" value=0 hidden>
+              </div>
+          </div>
+          <div class="card-body">
+              <div class="card card-small card-post card-post--1">
+                  <label for="chk3">Segment</label>
+                  <input type="checkbox" id="chk3">
+              </div>
+          </div>
+      </div>
+    <!-- End Small Stats Blocks -->  
+ </div>
+  
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script src="/static/assets/js/app/app-blog-overview.1.1.0.js"></script>
+    <script src="/static/assets/js/segmentation.js"></script>
+
+{% endblock javascripts %}
